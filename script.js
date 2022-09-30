@@ -10,11 +10,14 @@ function generatePassword() {
   // THEN I choose a length of at least 8 characters and no more than 128 characters
 
   // Array of options for computer to pick from
-  var SpecialChar = [];
-  var numbers = [];
-  var upperCase = [];
-  var lowerCase = [];
+  var specialChar = ['!','"','#','$','%','&','(',')','*','+',',','-','.','/',':',';','<','=','>','?','[',']','^','_','{','}','|','~'];
+  var numbers = ['0','1','2','3','4','5','6','7','8','9'];
+  var upperCase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+  var lowerCase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
+  var choiceMade = [specialChar, numbers, upperCase, lowerCase];
+
+  var index = Math.floor(Math.random() * choiceMade.length);
   var userPasswordLength = window.prompt("How many characters would you like your password contain?");
 
   if (userPasswordLength < 8 || userPasswordLength > 128) {
@@ -29,6 +32,9 @@ function generatePassword() {
   var lowercaseChoice = window.confirm("would you like lowercase characters?");
   var upperCaseChoice = window.confirm("would you like Upper Case characters?");
 
+  
+  // var computerChoice = SpecialChar[index];
+
   // WHEN I answer each prompt
   // THEN my input should be validated and at least one character type should be selected
   console.log(specialCharacterChoice, numbersChoice, lowercaseChoice, upperCaseChoice);
@@ -42,7 +48,7 @@ function generatePassword() {
   // WHEN the password is generated
   // THEN the password is either displayed in an alert or written to the page
 
-  return "password";
+  return "";
 }
 // Write password to the #password input
 function writePassword() {
@@ -52,6 +58,7 @@ function writePassword() {
   passwordText.value = password;
 
 }
+// for(i=0; i < userPasswordLength; i++){}
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
