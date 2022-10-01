@@ -135,7 +135,7 @@ function generatePassword() {
   if (upperCaseChoice == true) {
     choiceMade = choiceMade.concat(upperCase);
   }
-
+  let password = '';
 
   for (i = 0; i < userPasswordLength; i++) {
     var randomChoice = Math.floor(Math.random() * choiceMade.length);
