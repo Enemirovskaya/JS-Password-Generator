@@ -10,34 +10,53 @@ function generatePassword() {
   // THEN I choose a length of at least 8 characters and no more than 128 characters
 
   // Array of options for computer to pick from
-  var specialChar = ['!','"','#','$','%','&','(',')','*','+',',','-','.','/',':',';','<','=','>','?','[',']','^','_','{','}','|','~'];
-  var numbers = ['0','1','2','3','4','5','6','7','8','9'];
-  var upperCase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-  var lowerCase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-
-  var choiceMade = [specialChar, numbers, upperCase, lowerCase];
-
-  var index = Math.floor(Math.random() * choiceMade.length);
+  
   var userPasswordLength = window.prompt("How many characters would you like your password contain?");
 
   if (userPasswordLength < 8 || userPasswordLength > 128) {
-    window.alert('Choose number between 8 and 128.')
+    window.alert('Choose a number between 8 and 128.')
     return null;
   }
 
   // WHEN asked for character types to include in the password
   // THEN I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
-  var specialCharacterChoice = window.confirm("would you like special characters?");
-  var numbersChoice = window.confirm("would you like numbers?");
-  var lowercaseChoice = window.confirm("would you like lowercase characters?");
-  var upperCaseChoice = window.confirm("would you like Upper Case characters?");
+  var specialCharacterChoice = window.confirm("Would you like special characters?");
+  if (choiceMade == true){choiceMade.concat(specialChar);}
+
+  var numbersChoice = window.confirm("Would you like numbers?");
+  if (choiceMade == true){choiceMade.concat(numbers);}
+
+  var lowerCaseChoice = window.confirm("Would you like lowercase characters?");
+  if (choiceMade == true){choiceMade.concat(upperCase);}
+
+  var upperCaseChoice = window.confirm("Would you like upper case characters?");
+if (choiceMade == true){choiceMade.concat(lowerCase);}
+
+  var passwordLength = 8; 
+  var choiceMade = [];
+
+
+  var specialChar = ['!','"','#','$','%','&','(',')','*','+',',','-','.','/',':',';','<','=','>','?','[',']','^','_','{','}','|','~'];
+  var numbers = ['0','1','2','3','4','5','6','7','8','9'];
+  var upperCase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+  var lowerCase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+
+
+
+  for(i=0; i < userPasswordLength; i++){
+    var index = Math.floor(Math.random() * choiceMade.length);
+  }
+
+
+ 
+  
 
   
   // var computerChoice = SpecialChar[index];
 
   // WHEN I answer each prompt
   // THEN my input should be validated and at least one character type should be selected
-  console.log(specialCharacterChoice, numbersChoice, lowercaseChoice, upperCaseChoice);
+  console.log(specialCharacterChoice, numbersChoice, lowerCaseChoice, upperCaseChoice);
 
   if(!specialCharacterChoice && !numbersChoice && !lowercaseChoice && !upperCaseChoice){
     window.alert('Please choose at leat one caracter option.')
@@ -48,7 +67,7 @@ function generatePassword() {
   // WHEN the password is generated
   // THEN the password is either displayed in an alert or written to the page
 
-  return "";
+  return passwordLength
 }
 // Write password to the #password input
 function writePassword() {
@@ -58,7 +77,7 @@ function writePassword() {
   passwordText.value = password;
 
 }
-// for(i=0; i < userPasswordLength; i++){}
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
