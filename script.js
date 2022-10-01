@@ -1,5 +1,7 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+
+// Array of options for computer to pick from
 var specialChar = [
   "!",
   '"',
@@ -90,20 +92,13 @@ var lowerCase = [
 ];
 
 function generatePassword() {
-  // THEN I am presented with a series of prompts/confirms for password criteria
-  // WHEN prompted for password criteria
-  // THEN I select which criteria to include in the password
-  // WHEN prompted for the length of the password
-  // THEN I choose a length of at least 8 characters and no more than 128 characters
-
-  // Array of options for computer to pick from
-  var passwordLength = 8;
+   
   var choiceMade = [];
   var userPasswordLength = window.prompt(
     "How many characters would you like your password contain?"
   );
 
-  if (userPasswordLength < 8 || userPasswordLength > 128) {
+  if (userPasswordLength < 8 || userPasswordLength > 128 || isNaN(userPasswordLength)) {
     window.alert("Choose a number between 8 and 128.");
     return null;
   }
@@ -137,21 +132,13 @@ function generatePassword() {
   }
   let password = '';
 
+  // WHEN I answer each prompt
+  // THEN my input should be validated and at least one character type should be selected
+  // MY bloody for loop
   for (i = 0; i < userPasswordLength; i++) {
     var randomChoice = Math.floor(Math.random() * choiceMade.length);
     password = password + choiceMade[randomChoice];
   }
-  
-  // var computerChoice = SpecialChar[index];
-
-  // WHEN I answer each prompt
-  // THEN my input should be validated and at least one character type should be selected
-  console.log(
-    specialCharacterChoice,
-    numbersChoice,
-    lowerCaseChoice,
-    upperCaseChoice
-  );
 
   if (
     !specialCharacterChoice &&
@@ -159,7 +146,7 @@ function generatePassword() {
     !lowerCaseChoice &&
     !upperCaseChoice
   ) {
-    window.alert("Please choose at leat one caracter option.");
+    window.alert("Please choose at leat one character option.");
     return null;
   }
   // WHEN all prompts are answered
