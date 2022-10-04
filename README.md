@@ -12,6 +12,10 @@ Then Prompted user to choose the length of a password. Once that was done, user 
 
 I love to complain and would like to say that this challenge was the hardest out of 3 we've completed. 
  
+ ## Screenshot of generated password
+![screenshot of password generator](./Screenshot.jpg)
+
+
 ## User Story
 
 ```
